@@ -40,7 +40,7 @@ const App = (props: Props) => {
       </div>
 
       <div className="row justify-content-center">
-        <div className="col-8">
+        <div className="col-12">
             <h2>About</h2>
             
 
