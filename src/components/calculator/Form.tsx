@@ -5,30 +5,30 @@ interface Props {
   
 }
 
-const Form = (props: Props) => {
+const Form: React.FC<Props> = (props: Props) => {
   return (
     <form>
       <div className="row">
         <div className="col">
-          <TextInput />
+          <TextInput label="Initial deposit" />
         </div>
         <div className="col">
-          <TextInput />
+          <TextInput label="Regular deposit" />
         </div>
         <div className="col">
-          <DropDownInput />
+          <DropDownInput label="Deposit frequency" />
         </div>
       </div>
 
       <div className="row">
         <div className="col">
-          <DropDownInput />
+          <DropDownInput label="Compound frequency" />
         </div>
         <div className="col">
-          <TextInput />
+          <TextInput label="Number of years (max 50)" />
         </div>
         <div className="col">
-          <TextInput />
+          <TextInput label="Annual interest rate (max 20%)" />
         </div>
       </div>
       

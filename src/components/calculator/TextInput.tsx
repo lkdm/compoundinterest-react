@@ -1,18 +1,18 @@
-import React from 'react'
+
 
 interface Props {
-  
+  label: string
 }
 
-const TextInput = (props: Props) => {
+const TextInput: React.FC<Props> = ({label}) => {
   return (
     <div>
       <label>
-        Label
+        {label}
       </label>
       <div className="input-group mb-3">
         <span className="input-group-text">$</span>
-        <input type="text" className="form-control" aria-label="Amount (to the nearest dollar)" />
+        <input type="text" className="form-control" aria-label="{label}" />
       </div>
     </div>
   )
