@@ -10,10 +10,10 @@ const Form: React.FC<Props> = (props: Props) => {
     <form id="compoundInterestForm">
       <div className="row">
         <div className="col">
-          <TextInput label="Initial deposit" />
+          <TextInput label="Initial deposit" prepend="$" />
         </div>
         <div className="col">
-          <TextInput label="Regular deposit" />
+          <TextInput label="Regular deposit" prepend="$" />
         </div>
         <div className="col">
           <DropDownInput label="Deposit frequency" />
@@ -28,7 +28,7 @@ const Form: React.FC<Props> = (props: Props) => {
           <TextInput label="Number of years" />
         </div>
         <div className="col">
-          <TextInput label="Annual interest rate" />
+          <TextInput label="Annual interest rate" append="%" />
         </div>
       </div>
       
