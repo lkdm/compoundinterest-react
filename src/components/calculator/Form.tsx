@@ -7,7 +7,7 @@ interface Props {
 
 const Form: React.FC<Props> = (props: Props) => {
   return (
-    <form>
+    <form id="compoundInterestForm">
       <div className="row">
         <div className="col">
           <TextInput label="Initial deposit" />
@@ -25,10 +25,10 @@ const Form: React.FC<Props> = (props: Props) => {
           <DropDownInput label="Compound frequency" />
         </div>
         <div className="col">
-          <TextInput label="Number of years (max 50)" />
+          <TextInput label="Number of years" />
         </div>
         <div className="col">
-          <TextInput label="Annual interest rate (max 20%)" />
+          <TextInput label="Annual interest rate" />
         </div>
       </div>
       

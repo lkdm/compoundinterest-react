@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/style.css'
 import Form from './components/calculator/Form'
 
 interface Props {
@@ -10,7 +11,7 @@ const App = (props: Props) => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-8">
+        <div className="col-12">
           <h1>Compound interest calculator</h1>
           <p>
             This <mark>compound interest</mark> calculator helps you work out:
@@ -24,14 +25,14 @@ const App = (props: Props) => {
         </div>
       </div>
       <div className="row justify-content-center">
-        <div className="col-8">
+        <div className="col-12">
             <h2>Your strategy</h2>
             <Form />
           
         </div>
       </div>
       <div className="row justify-content-center">
-        <div className="col-8">
+        <div className="col-12">
             <h2>Results</h2>
             
           
