@@ -21,6 +21,7 @@ const App = () => {
   const [strategy, setStrategy] = useState<Strategy>(defaultStrategy)
 
   const handleSubmit = () => {
+    console.log("YES")
     // setStrategy({})
   }
 
