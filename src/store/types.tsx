@@ -1,4 +1,4 @@
-type Frequency = "Annually" | "Monthly" | "Fortnightly" | "Weekly" | "Daily"
+export type Frequency = "Annually" | "Monthly" | "Fortnightly" | "Weekly" | "Daily"
 
 export interface Strategy {
   initialDeposit: number,

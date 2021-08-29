@@ -1,12 +1,13 @@
 import TextInput from './TextInput'
 import DropDownInput from './DropDownInput'
+import {Strategy, Frequency} from '../../store/types'
 
 interface Props {
   
 }
 
 const Form: React.FC<Props> = (props: Props) => {
-  const frequency = ["Annually", "Monthly", "Fortnightly", "Weekly", "Daily"]
+  const frequency: Array<Frequency> = ["Annually", "Monthly", "Fortnightly", "Weekly", "Daily"]
   const depositFrequency = frequency
   const compoundFrequency = depositFrequency.slice(0, 2) // ["Annually", "Monthly"]
 
