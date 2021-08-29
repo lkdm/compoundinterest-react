@@ -43,7 +43,15 @@ const App = (props: Props) => {
         <div className="col-12">
             <h2>About</h2>
             
+            <h3>Technologies used</h3>
 
+            <ul>
+              <li>Javascript</li>
+              <li>Typescript</li>
+              <li>ReactJS</li>
+              <li>Redux</li>
+              <li>Bootstrap CSS</li>
+            </ul>
         </div>
       </div>
     </div>
