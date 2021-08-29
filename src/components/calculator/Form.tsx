@@ -3,7 +3,8 @@ import DropDownInput from './DropDownInput'
 import {Strategy, Frequency} from '../../store/types'
 
 interface Props {
-  
+  handleSubmit: Function,
+  strategy: Strategy
 }
 
 const Form: React.FC<Props> = (props: Props) => {

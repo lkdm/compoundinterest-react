@@ -8,8 +8,17 @@ interface Props {
   strategy: Strategy
 }
 
+const defaultStrategy: Strategy = {
+  initialDeposit: 0,
+  regularDeposit: 0,
+  depositFrequency: "Monthly",
+  compoundFrequency: "Monthly",
+  numberOfYears: 10,
+  annualInterestRate: 5
+}
+
 const App = () => {
-  const [strategy, setStrategy] = useState<Strategy>()
+  const [strategy, setStrategy] = useState<Strategy>(defaultStrategy)
 
   const handleSubmit = () => {
     // setStrategy({})
@@ -34,7 +43,7 @@ const App = () => {
       <div className="row justify-content-center">
         <div className="col-12">
             <h2>Your strategy</h2>
-            <Form />
+            <Form handleSubmit={handleSubmit} strategy={strategy} />
           
         </div>
       </div>
