@@ -2,24 +2,18 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/style.css'
 import Form from './components/calculator/Form'
-
-type Frequency = "Annually" | "Monthly" | "Fortnightly" | "Weekly" | "Daily"
-
-interface Strategy {
-  initialDeposit: number,
-  regularDeposit: number,
-  depositFrequency: Frequency,
-  compoundFrequency: Frequency,
-  numberOfYears: number,
-  annualInterestRate: number
-}
+import {Strategy} from './store/types'
 
 interface Props {
   strategy: Strategy
 }
 
 const App = () => {
-  const [strategy, setStrategy] = useState({})
+  const [strategy, setStrategy] = useState<Strategy>()
+
+  const handleSubmit = () => {
+    // setStrategy({})
+  }
 
   return (
     <div className="container">
