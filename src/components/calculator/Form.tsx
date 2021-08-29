@@ -6,6 +6,10 @@ interface Props {
 }
 
 const Form: React.FC<Props> = (props: Props) => {
+  const frequency = ["Annually", "Monthly", "Fortnightly", "Weekly", "Daily"]
+  const depositFrequency = frequency
+  const compoundFrequency = depositFrequency.slice(0, 2) // ["Annually", "Monthly"]
+
   return (
     <form id="compoundInterestForm">
       <div className="row">
@@ -16,13 +20,13 @@ const Form: React.FC<Props> = (props: Props) => {
           <TextInput label="Regular deposit" prepend="$" />
         </div>
         <div className="col">
-          <DropDownInput label="Deposit frequency" />
+          <DropDownInput label="Deposit frequency" options={depositFrequency} />
         </div>
       </div>
 
       <div className="row">
         <div className="col">
-          <DropDownInput label="Compound frequency" />
+          <DropDownInput label="Compound frequency" options={compoundFrequency} />
         </div>
         <div className="col">
           <TextInput label="Number of years" />
