@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/style.css'
 import Form from './components/calculator/Form'
 
-interface Props {
-  
+type Frequency = "Annually" | "Monthly" | "Fortnightly" | "Weekly" | "Daily"
+
+interface Strategy {
+  initialDeposit: number,
+  regularDeposit: number,
+  depositFrequency: Frequency,
+  compoundFrequency: Frequency,
+  numberOfYears: number,
+  annualInterestRate: number
 }
 
-const App = (props: Props) => {
+interface Props {
+  strategy: Strategy
+}
+
+const App = () => {
+  const [strategy, setStrategy] = useState({})
+
   return (
     <div className="container">
       <div className="row justify-content-center">
