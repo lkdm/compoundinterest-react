@@ -17,25 +17,25 @@ const Form: React.FC<Props> = ({handleSubmit, strategy}) => {
     <form id="compoundInterestForm">
       <div className="row">
         <div className="col">
-          <TextInput label="Initial deposit" prepend="$" onSubmit={handleSubmit} />
+          <TextInput name="initialDeposit" label="Initial deposit" prepend="$" onSubmit={handleSubmit} />
         </div>
         <div className="col">
-          <TextInput label="Regular deposit" prepend="$" onSubmit={handleSubmit} />
+          <TextInput name="regularDeposit" label="Regular deposit" prepend="$" onSubmit={handleSubmit} />
         </div>
         <div className="col">
-          <DropDownInput label="Deposit frequency" options={depositFrequency} />
+          <DropDownInput name="depositFrequency" label="Deposit frequency" options={depositFrequency} />
         </div>
       </div>
 
       <div className="row">
         <div className="col">
-          <DropDownInput label="Compound frequency" options={compoundFrequency} />
+          <DropDownInput name="compoundFrequency" label="Compound frequency" options={compoundFrequency} />
         </div>
         <div className="col">
-          <TextInput label="Number of years" onSubmit={handleSubmit} />
+          <TextInput name="numberOfYears" label="Number of years" onSubmit={handleSubmit} />
         </div>
         <div className="col">
-          <TextInput label="Annual interest rate" append="%" onSubmit={handleSubmit} />
+          <TextInput name="annualInterestRate" label="Annual interest rate" append="%" onSubmit={handleSubmit} />
         </div>
       </div>
       
