@@ -20,9 +20,17 @@ const defaultStrategy: Strategy = {
 const App = () => {
   const [strategy, setStrategy] = useState<Strategy>(defaultStrategy)
 
-  const handleSubmit = () => {
-    console.log("YES")
-    // setStrategy({})
+  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // 
+    // TODO: Write IF statement to sanitise inputs
+
+    const name = event.target.name
+
+    setStrategy({
+      ...strategy,
+      [name]: event.target.value
+    })
+    console.log(strategy)
   }
 
   return (
