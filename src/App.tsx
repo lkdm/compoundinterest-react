@@ -30,7 +30,8 @@ const App = () => {
     if (name === "depositFrequency" || name === "compoundFrequency")
       value = event.target.value
     else // Else cast numbers as numbers
-      value = +event.target.value
+      // And restrict number to two decimal places.
+      value = event.target.value.toString().split(".").map((el,i)=>i?el.split("").slice(0,2).join(""):el).join(".")
 
     setStrategy({ // Update state based on form field name and its new value
       ...strategy,
