@@ -25,9 +25,16 @@ const App = () => {
 
     const name = event.target.name // Form field name
 
+    // Cast frequency as string
+    let value: string | number
+    if (name === "depositFrequency" || name === "compoundFrequency")
+      value = event.target.value
+    else // Else cast numbers as numbers
+      value = +event.target.value
+
     setStrategy({ // Update state based on form field name and its new value
       ...strategy,
-      [name]: event.target.value
+      [name]: value
     })
    
   }
