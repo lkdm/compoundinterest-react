@@ -17,7 +17,19 @@ const TextInput: React.FC<Props> = ({label, name, prepend, append, onSubmit}) =>
       </label>
       <div className="input-group mb-3">
         {prepend && <span className="input-group-text">{prepend}</span>}
-        <input type="text" name={name} className="form-control" aria-label="{label}" onChange={onSubmit} />
+        <input
+          type="text"
+          name={name}
+          className="form-control"
+          aria-label="{label}"
+          onChange={onSubmit}
+          onKeyPress={(event) => {
+            // Prevent non-numeric characters from being entered (excepting `.`)
+            if (!/[0-9\.]/.test(event.key)) {
+              event.preventDefault();
+            }
+          }}
+        />
         {append && <span className="input-group-text">{append}</span>}
       </div>
     </div>
