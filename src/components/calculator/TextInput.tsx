@@ -6,10 +6,11 @@ interface Props {
   name: string,
   prepend?: string,
   append?: string,
-  onSubmit: ChangeEventHandler<HTMLInputElement>
+  onSubmit: ChangeEventHandler<HTMLInputElement>,
+  value: string | number
 }
 
-const TextInput: React.FC<Props> = ({label, name, prepend, append, onSubmit}) => {
+const TextInput: React.FC<Props> = ({label, name, prepend, append, onSubmit, value}) => {
   return (
     <div>
       <label>
@@ -23,12 +24,7 @@ const TextInput: React.FC<Props> = ({label, name, prepend, append, onSubmit}) =>
           className="form-control"
           aria-label="{label}"
           onChange={onSubmit}
-          onKeyPress={(event) => {
-            // Prevent non-numeric characters from being entered (excepting `.`)
-            if (!/[0-9\.]/.test(event.key)) {
-              event.preventDefault();
-            }
-          }}
+          value={value}
         />
         {append && <span className="input-group-text">{append}</span>}
       </div>

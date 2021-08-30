@@ -3,14 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/style.css'
 import Form from './components/calculator/Form'
 import {Strategy} from './store/types'
+import {cleanNumber, cleanMoney, cleanPercent, cleanYears} from './services/InputCleaners'
 
 interface Props {
   strategy: Strategy
 }
 
 const defaultStrategy: Strategy = {
-  initialDeposit: 0,
-  regularDeposit: 0,
+  initialDeposit: 0, // in cents
+  regularDeposit: 0, // in cents
   depositFrequency: "Monthly",
   compoundFrequency: "Monthly",
   numberOfYears: 10,
@@ -29,8 +30,13 @@ const App = () => {
     let value: string | number
     if (name === "depositFrequency" || name === "compoundFrequency")
       value = event.target.value
-    else // Else cast numbers as numbers
-      value = +event.target.value
+    else if (name === "regularDeposit" || name === "initialDeposit")
+      value = cleanMoney(event.target.value)
+    else if (name === "annualInterestRate")
+      value = cleanPercent(event.target.value)
+    else // Number of years
+      value = cleanYears(event.target.value)
+      
 
     setStrategy({ // Update state based on form field name and its new value
       ...strategy,
