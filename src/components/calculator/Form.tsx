@@ -32,7 +32,7 @@ const Form: React.FC<Props> = ({handleSubmit, strategy}) => {
           <DropDownInput name="compoundFrequency" label="Compound frequency" options={compoundFrequency} handleSubmit={handleSubmit} />
         </div>
         <div className="col">
-          <TextInput name="numberOfYears" label="Number of years" onSubmit={handleSubmit} value={strategy.numberOfYears} />
+          <TextInput name="numberOfYears" label="Number of years" onSubmit={handleSubmit} value={strategy.numberOfYears} append="years" />
         </div>
         <div className="col">
           <TextInput name="annualInterestRate" label="Annual interest rate" append="%" onSubmit={handleSubmit} value={(strategy.annualInterestRate/100).toFixed(2)} />
