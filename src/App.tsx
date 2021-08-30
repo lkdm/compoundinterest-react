@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/style.css'
 import Form from './components/calculator/Form'
 import {Strategy} from './store/types'
+import {cleanNumber, cleanMoney, cleanPercent, cleanYears} from './services/InputCleaners'
 
 interface Props {
   strategy: Strategy
@@ -16,30 +17,6 @@ const defaultStrategy: Strategy = {
   numberOfYears: 10,
   annualInterestRate: 5
 }
-
-const cleanNumber = (rawInput: string, min?: number, max?: number): number => {
-  /*
-    Accepts a string and casts it into a number
-    - Disallows alpha & special characters
-    - Casts the raw string into a number
-  */
-
-  // Remove letters and special character (excepting decimal)
-  const cleanedInput: string = rawInput.replace(/[^0-9]/g, "")
-
-  // Cast result to number
-  let result: number = Number(cleanedInput)
-
-  if (min && result < min)
-    result = min // Min
-  if (max && result > max)
-    result = max // Max
-
-  return result
-}
-const cleanMoney = cleanNumber
-const cleanPercent = (rawInput: string): number => cleanNumber(rawInput, 0, 10000)
-const cleanYears = (rawInput: string): number => cleanNumber(rawInput, 0, 30)
 
 const App = () => {
   const [strategy, setStrategy] = useState<Strategy>(defaultStrategy)
