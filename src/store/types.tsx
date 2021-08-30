@@ -9,5 +9,16 @@ export interface Strategy {
   depositFrequency: Frequency,
   compoundFrequency: Frequency,
   numberOfYears: number,
-  annualInterestRate: number
+  annualInterestRate: Percent
+}
+
+export interface Result {
+  years: Array<Year>
+}
+
+export interface Year {
+  yearNumber: number
+  cumulativeRegularDeposits: Money
+  cumulativeInterest: Money
+  cumulativeTotal: Money
 }

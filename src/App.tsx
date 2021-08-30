@@ -4,6 +4,7 @@ import './styles/style.css'
 import Form from './components/calculator/Form'
 import {Strategy} from './store/types'
 import {cleanNumber, cleanMoney, cleanPercent, cleanYears} from './services/InputCleaners'
+import { calculateCompoundInterest } from './services/CompoundInterest'
 
 interface Props {
   strategy: Strategy
@@ -47,7 +48,8 @@ const App = () => {
 
   useEffect(() => {
     // Upon state change
-    console.log(strategy)
+    const result = calculateCompoundInterest(strategy)
+    console.log(result)
   }, [strategy])
 
   return (
