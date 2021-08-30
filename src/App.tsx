@@ -17,6 +17,24 @@ const defaultStrategy: Strategy = {
   annualInterestRate: 5
 }
 
+const cleanNumber = (rawInput: string): number => {
+  /*
+    Format a number 
+  */
+
+  // Remove letters and special character (excepting decimal)
+  const cleanedInput: string = rawInput.replace(/[^0-9]/g, "")
+
+  // Cast result to number
+  const result: number = Number(cleanedInput)
+
+  console.log(result)
+
+  return result
+}
+const cleanMoney = cleanNumber
+const cleanPercent = cleanNumber
+
 const App = () => {
   const [strategy, setStrategy] = useState<Strategy>(defaultStrategy)
 
@@ -29,9 +47,13 @@ const App = () => {
     let value: string | number
     if (name === "depositFrequency" || name === "compoundFrequency")
       value = event.target.value
-    else // Else cast numbers as numbers
-      // And restrict number to two decimal places.
-      value = event.target.value.toString().split(".").map((el,i)=>i?el.split("").slice(0,2).join(""):el).join(".")
+    else if (name === "regularDeposit" || name === "initialDeposit")
+      value = cleanMoney(event.target.value)
+    else if (name === "annualInterestRate")
+      value = cleanPercent(event.target.value)
+    else // Number of years
+      value = cleanNumber(event.target.value)
+      
 
     setStrategy({ // Update state based on form field name and its new value
       ...strategy,
