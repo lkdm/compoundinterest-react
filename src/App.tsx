@@ -20,7 +20,7 @@ const defaultStrategy: Strategy = {
 const App = () => {
   const [strategy, setStrategy] = useState<Strategy>(defaultStrategy)
 
-  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     // Handles a submit event each time the user changes something in the form
 
     const name = event.target.name // Form field name

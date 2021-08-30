@@ -4,7 +4,7 @@ import {Strategy, Frequency} from '../../store/types'
 import { ChangeEventHandler } from 'react'
 
 interface Props {
-  handleSubmit: ChangeEventHandler<HTMLInputElement>,
+  handleSubmit: ChangeEventHandler<HTMLInputElement | HTMLSelectElement>,
   strategy: Strategy
 }
 
@@ -23,13 +23,13 @@ const Form: React.FC<Props> = ({handleSubmit, strategy}) => {
           <TextInput name="regularDeposit" label="Regular deposit" prepend="$" onSubmit={handleSubmit} />
         </div>
         <div className="col">
-          <DropDownInput name="depositFrequency" label="Deposit frequency" options={depositFrequency} />
+          <DropDownInput name="depositFrequency" label="Deposit frequency" options={depositFrequency} handleSubmit={handleSubmit} />
         </div>
       </div>
 
       <div className="row">
         <div className="col">
-          <DropDownInput name="compoundFrequency" label="Compound frequency" options={compoundFrequency} />
+          <DropDownInput name="compoundFrequency" label="Compound frequency" options={compoundFrequency} handleSubmit={handleSubmit} />
         </div>
         <div className="col">
           <TextInput name="numberOfYears" label="Number of years" onSubmit={handleSubmit} />
