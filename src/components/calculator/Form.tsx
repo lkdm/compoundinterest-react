@@ -1,12 +1,15 @@
 import TextInput from './TextInput'
 import DropDownInput from './DropDownInput'
+import {Strategy, Frequency} from '../../store/types'
+import { ChangeEventHandler } from 'react'
 
 interface Props {
-  
+  handleSubmit: ChangeEventHandler<HTMLInputElement | HTMLSelectElement>,
+  strategy: Strategy
 }
 
-const Form: React.FC<Props> = (props: Props) => {
-  const frequency = ["Annually", "Monthly", "Fortnightly", "Weekly", "Daily"]
+const Form: React.FC<Props> = ({handleSubmit, strategy}) => {
+  const frequency: Array<Frequency> = ["Annually", "Monthly", "Fortnightly", "Weekly", "Daily"]
   const depositFrequency = frequency
   const compoundFrequency = depositFrequency.slice(0, 2) // ["Annually", "Monthly"]
 
@@ -14,25 +17,25 @@ const Form: React.FC<Props> = (props: Props) => {
     <form id="compoundInterestForm">
       <div className="row">
         <div className="col">
-          <TextInput label="Initial deposit" prepend="$" />
+          <TextInput name="initialDeposit" label="Initial deposit" prepend="$" onSubmit={handleSubmit} />
         </div>
         <div className="col">
-          <TextInput label="Regular deposit" prepend="$" />
+          <TextInput name="regularDeposit" label="Regular deposit" prepend="$" onSubmit={handleSubmit} />
         </div>
         <div className="col">
-          <DropDownInput label="Deposit frequency" options={depositFrequency} />
+          <DropDownInput name="depositFrequency" label="Deposit frequency" options={depositFrequency} handleSubmit={handleSubmit} />
         </div>
       </div>
 
       <div className="row">
         <div className="col">
-          <DropDownInput label="Compound frequency" options={compoundFrequency} />
+          <DropDownInput name="compoundFrequency" label="Compound frequency" options={compoundFrequency} handleSubmit={handleSubmit} />
         </div>
         <div className="col">
-          <TextInput label="Number of years" />
+          <TextInput name="numberOfYears" label="Number of years" onSubmit={handleSubmit} />
         </div>
         <div className="col">
-          <TextInput label="Annual interest rate" append="%" />
+          <TextInput name="annualInterestRate" label="Annual interest rate" append="%" onSubmit={handleSubmit} />
         </div>
       </div>
       

@@ -1,13 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/style.css'
 import Form from './components/calculator/Form'
+import {Strategy} from './store/types'
 
 interface Props {
-  
+  strategy: Strategy
 }
 
-const App = (props: Props) => {
+const defaultStrategy: Strategy = {
+  initialDeposit: 0,
+  regularDeposit: 0,
+  depositFrequency: "Monthly",
+  compoundFrequency: "Monthly",
+  numberOfYears: 10,
+  annualInterestRate: 5
+}
+
+const App = () => {
+  const [strategy, setStrategy] = useState<Strategy>(defaultStrategy)
+
+  const handleSubmit = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    // Handles a submit event each time the user changes something in the form
+
+    const name = event.target.name // Form field name
+
+    // Cast frequency as string
+    let value: string | number
+    if (name === "depositFrequency" || name === "compoundFrequency")
+      value = event.target.value
+    else // Else cast numbers as numbers
+      value = +event.target.value
+
+    setStrategy({ // Update state based on form field name and its new value
+      ...strategy,
+      [name]: value
+    })
+   
+  }
+
+  useEffect(() => {
+    // Upon state change
+    console.log(strategy)
+  }, [strategy])
+
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -27,7 +63,7 @@ const App = (props: Props) => {
       <div className="row justify-content-center">
         <div className="col-12">
             <h2>Your strategy</h2>
-            <Form />
+            <Form handleSubmit={handleSubmit} strategy={strategy} />
           
         </div>
       </div>
