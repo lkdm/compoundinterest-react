@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/style.css'
 import Form from './components/calculator/Form'
@@ -21,17 +21,21 @@ const App = () => {
   const [strategy, setStrategy] = useState<Strategy>(defaultStrategy)
 
   const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // 
-    // TODO: Write IF statement to sanitise inputs
+    // Handles a submit event each time the user changes something in the form
 
-    const name = event.target.name
+    const name = event.target.name // Form field name
 
-    setStrategy({
+    setStrategy({ // Update state based on form field name and its new value
       ...strategy,
       [name]: event.target.value
     })
-    console.log(strategy)
+   
   }
+
+  useEffect(() => {
+    // Upon state change
+    console.log(strategy)
+  }, [strategy])
 
   return (
     <div className="container">
