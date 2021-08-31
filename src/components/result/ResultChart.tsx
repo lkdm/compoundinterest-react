@@ -72,7 +72,7 @@ const ResultChart: React.FC<Props> = ({data, initialDeposit}) => {
           <XAxis dataKey="yearNumber" />
           <YAxis tickFormatter={(value) => formatMoney(value)} />
           <Tooltip content={<CustomTooltip />}/>
-          <Legend />
+          <Legend verticalAlign="bottom" height={36} />
           <Bar name="Initial deposit" dataKey="initialDeposit" stackId="a" fill="#1c4d78" />
           <Bar name="Regular deposits" dataKey="cumulativeRegularDeposits" stackId="a" fill="#3c83c2" />
           <Bar name="Interest" dataKey="cumulativeInterest" stackId="a" fill="#82ca9d" />
