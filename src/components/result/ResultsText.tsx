@@ -1,4 +1,4 @@
-import { YearResult, Result, Money } from '../../store/types';
+import { Result, Money } from '../../store/types';
 import formatMoney from '../../services/FormatMoney'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 const ResultsText: React.FC<Props> = ({data, initialDeposit}) => {
 
   // Guard
-  if (data == undefined) return null
+  if (data === undefined) return null
 
   // Get last year result
   const result = data[data.length - 1]

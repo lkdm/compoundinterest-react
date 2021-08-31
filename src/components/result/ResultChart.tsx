@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, TooltipProps } from 'recharts';
-import { YearResult, Result, Money } from '../../store/types';
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, TooltipProps } from 'recharts';
+import { Result, Money } from '../../store/types';
 import formatMoney from '../../services/FormatMoney'
 
 interface Props {
@@ -53,7 +53,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>)
 const ResultChart: React.FC<Props> = ({data, initialDeposit}) => {
 
   // Guard
-  if (data == undefined) return null
+  if (data === undefined) return null
 
   return (
     <ResponsiveContainer width="100%" height="90%">
