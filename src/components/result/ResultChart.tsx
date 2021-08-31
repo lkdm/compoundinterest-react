@@ -16,9 +16,9 @@ const ResultChart: React.FC<Props> = ({data, initialDeposit}) => {
           data={data}
           margin={{
             top: 20,
-            right: 30,
-            left: 20,
-            bottom: 5,
+            right: 0,
+            left: 0,
+            bottom: 20,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
@@ -28,7 +28,7 @@ const ResultChart: React.FC<Props> = ({data, initialDeposit}) => {
           <Legend />
           <Bar dataKey="initialDeposit" stackId="a" fill="#000" />
           <Bar dataKey="cumulativeRegularDeposits" stackId="a" fill="#ccc" />
-          <Bar dataKey="cumulativeTotal" stackId="a" fill="#82ca9d" />
+          <Bar dataKey="cumulativeInterest" stackId="a" fill="#82ca9d" />
 
         </BarChart>
       </ResponsiveContainer>

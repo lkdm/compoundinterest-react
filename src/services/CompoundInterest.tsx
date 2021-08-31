@@ -51,7 +51,8 @@ const frequencyPerYear = (frequency: Frequency): number => {
 export const calculateCompoundInterest = (strategy: Strategy) => {
 
   // Definitions
-  const initialDeposit = strategy.initialDeposit
+  const initialDeposit = strategy.initialDeposit/100
+  const regularDeposit = strategy.regularDeposit/100
   const depositFrequency = strategy.depositFrequency
   const compoundFrequency = strategy.compoundFrequency // "Annually", "Monthly", ...
   const annualInterestRate: number = strategy.annualInterestRate // Annual interest rate
@@ -59,36 +60,45 @@ export const calculateCompoundInterest = (strategy: Strategy) => {
   // Determine the interest rate per compound
   const rate = ratePerCompound(annualInterestRate, compoundFrequency)/10000
   
-  // Goes inside FOR LOOP
-  // sumDepositsForPeriod(initialDeposit, depositFrequency, compoundFrequency) // Add the deposits for period
-
   /*
    * Perform calculations per compound frequency
    */
-
   let results: Result = []
 
   let P: number = initialDeposit
   let I: number = 0
+  let cumulativeDeposits: number = 0
+  let cumulativeInterest: number = 0
   for (let n:number = 0; n < frequencyPerYear(compoundFrequency); n++) {
     // For each compound period
 
-    // SUM deposits made during period, and add to (P)rincipal
-    P = P + sumDepositsForPeriod(initialDeposit, depositFrequency, compoundFrequency)
+    // 1 - All the deposits added up
+    // Deposits made this period
+    const depositThisPeriod = sumDepositsForPeriod(regularDeposit, depositFrequency, compoundFrequency)
+    
+
+    // The principle is initial + cumulativeDeposits + cumulativeInterest
+    const P = initialDeposit + cumulativeDeposits + cumulativeInterest
 
     // Calculate interest based on the rate
     const i: number = P * (1 + rate) - P
-    I = I+i // Cumulative interest
+
+    // Save cumulative deposits and interest
+    cumulativeDeposits += depositThisPeriod
+    cumulativeInterest += i
     
-    // Add the interest to the principal
-    P = P + I
 
     results.push({
       yearNumber: n+1,
-      cumulativeRegularDeposits: P-initialDeposit, // Principal less initial deposit
-      cumulativeInterest: I,
-      cumulativeTotal: P
+      cumulativeRegularDeposits: cumulativeDeposits, // Principal less initial deposit
+      cumulativeInterest: cumulativeInterest,
+      cumulativeTotal: P + I
     })
+
+    // Inital deposit
+    // Cumulative regular deposits
+    // Interest
+    // Sub-total
   }
 
   return results
