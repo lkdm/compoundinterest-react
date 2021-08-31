@@ -12,11 +12,7 @@ export interface Strategy {
   annualInterestRate: Percent
 }
 
-export interface Result {
-  years: Array<Year>
-}
-
-export interface Year {
+export interface YearResult {
   yearNumber: number
   cumulativeRegularDeposits: Money
   cumulativeInterest: Money

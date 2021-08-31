@@ -1,4 +1,4 @@
-import {Strategy} from '../store/types'
+import { Frequency, Strategy, YearResult } from '../store/types'
 /*
 Calculate Compound Interest
 
@@ -19,30 +19,77 @@ Calculate Compound Interest
 // r/f
 
 // Calculate interest rate for each compound, given annual rate and compounds/year
-const ratePerCompound = (ratePerAnnum: number, compoundsPerYear: number): number => ratePerAnnum/compoundsPerYear
-const simpleInterest = (r: number, p: number): number => p*r
+const ratePerCompound = (annualInterestRate: number, compoundFrequency: Frequency): number => annualInterestRate/frequencyPerYear(compoundFrequency)
+
+const sumDepositsForPeriod = (amount: number, depositFrequency: Frequency, compoundFrequency: Frequency): number => {
+  /*
+   * Calculate the sum of deposits made per compound period
+   * Given: Deposit amount, deposits per year, and compounds per year
+   */
+  if (compoundFrequency == "Monthly")
+    return amount * frequencyPerYear(depositFrequency) / 12 // <-----
+  // Yearly
+  return amount * frequencyPerYear(depositFrequency)
+}
+
+const frequencyPerYear = (frequency: Frequency): number => {
+  /*
+   * Convert a frequency string into a _number_ of times per year
+   */
+  enum convertFrequencyStringToNumber {
+    Annually = 1,
+    Monthly = 12,
+    Fortnightly = 26.0714,
+    Weekly = 52.1429,
+    Daily = 365,
+  }
+  return convertFrequencyStringToNumber[frequency]
+}
+
 
 
 export const calculateCompoundInterest = (strategy: Strategy) => {
-  // R = Rate per annum
-  const R: number = strategy.annualInterestRate/10000
 
-  let r: number // Rate per compound
-  let F: number // Compound frequency
-  if (strategy.compoundFrequency === "Monthly") {
-    r = ratePerCompound(R, 12)
-    F = 12*strategy.numberOfYears // 12 compounds per year
-  } else { // Per annum
-    r = R
-    F = strategy.numberOfYears
+  // Definitions
+  const initialDeposit = strategy.initialDeposit
+  const depositFrequency = strategy.depositFrequency
+  const compoundFrequency = strategy.compoundFrequency // "Annually", "Monthly", ...
+  const annualInterestRate: number = strategy.annualInterestRate // Annual interest rate
+
+  // Determine the interest rate per compound
+  const rate = ratePerCompound(annualInterestRate, compoundFrequency)/10000
+  
+  // Goes inside FOR LOOP
+  // sumDepositsForPeriod(initialDeposit, depositFrequency, compoundFrequency) // Add the deposits for period
+
+  /*
+   * Perform calculations per compound frequency
+   */
+
+  let results: Array<YearResult> = []
+
+  let P: number = initialDeposit
+  let I: number = 0
+  for (let n:number = 0; n < frequencyPerYear(compoundFrequency); n++) {
+    // For each compound period
+
+    // SUM deposits made during period, and add to (P)rincipal
+    P = P + sumDepositsForPeriod(initialDeposit, depositFrequency, compoundFrequency)
+
+    // Calculate interest based on the rate
+    const i: number = P * (1 + rate) - P
+    I = I+i // Cumulative interest
+    
+    // Add the interest to the principal
+    P = P + I
+
+    results.push({
+      yearNumber: n+1,
+      cumulativeRegularDeposits: P-initialDeposit, // Principal less initial deposit
+      cumulativeInterest: I,
+      cumulativeTotal: P
+    })
   }
 
-  // Principal
-  let P = strategy.initialDeposit
-
-  for (let n:number = 0; n< F; n++) {
-    P = P * (1 + r)
-  }
-
-  return P
+  return results
 }
