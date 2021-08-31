@@ -1,14 +1,12 @@
 import React, { PureComponent } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, TooltipProps } from 'recharts';
 import { YearResult, Result, Money } from '../../store/types';
-// import formatMoney from '../../services/FormatMoney'
+import formatMoney from '../../services/FormatMoney'
 
 interface Props {
   data: Result,
   initialDeposit: Money
 }
-
-const formatMoney = (value: number) => new Intl.NumberFormat('en', { notation: "compact", compactDisplay: "short" }).format(Number(value))
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>): any => {
   if (active && payload && payload.length) {

@@ -21,6 +21,11 @@ body {
   line-height: 0%;
 }
 
-.custom-tooltip dd {
+.custom-tooltip dd, .resultsTest dd {
   text-align: right
+}
+
+.resultsTest {
+  line-height: 32%;
+  margin-top: 24px;
 }

@@ -6,6 +6,7 @@ import {Strategy, YearResult, Result} from './store/types'
 import {cleanNumber, cleanMoney, cleanPercent, cleanYears} from './services/InputCleaners'
 import { calculateCompoundInterest } from './services/CompoundInterest'
 import ResultChart from './components/result/ResultChart'
+import ResultsText from './components/result/ResultsText'
 
 interface Props {
   strategy: Strategy
@@ -86,6 +87,13 @@ const App = () => {
         <div className="col-12">
             <h2>Results</h2>
             <ResultChart data={result} initialDeposit={strategy.initialDeposit} />
+        </div>
+      </div>
+
+      <div className="row justify-content-center">
+        <div className="col-12">
+            <h3>Your strategy</h3>
+            <ResultsText data={result} initialDeposit={strategy.initialDeposit} />
         </div>
       </div>
 
