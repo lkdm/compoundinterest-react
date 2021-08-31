@@ -1,3 +1,23 @@
+body {
+  background-color: #fff;
+}
+
 #compoundInterestForm label {
   font-size: 80%
+}
+
+.custom-tooltip {
+  padding: 1.35rem;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  width: 200px;
+  max-width: 100%;
+  font-size: .775rem;
+  pointer-events: auto;
+  background-color: rgba(255,255,255,1);
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+  border-radius: .25rem;
+  line-height: 0%;
 }
