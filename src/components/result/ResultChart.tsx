@@ -21,21 +21,25 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>)
     return (
       <div className="custom-tooltip">
         <dl className="row">
-          <dt className="col-sm-6">Initial</dt>
-          <dd className="col-sm-6">{formatMoney(inital)}</dd>
+          <dt className="col-sm-12 g-0">Year {label}</dt>
+        </dl>
+        <hr />
+        <dl className="row">
+          <dt className="col-sm-6 g-0">Initial</dt>
+          <dd className="col-sm-6 g-0">{formatMoney(inital)}</dd>
         </dl>
         <dl className="row">
-          <dt className="col-sm-6">Deposits</dt>
-          <dd className="col-sm-6">{formatMoney(deposits)}</dd>
+          <dt className="col-sm-6 g-0">Deposits</dt>
+          <dd className="col-sm-6 g-0">{formatMoney(deposits)}</dd>
         </dl>
         <dl className="row">
-          <dt className="col-sm-6">Interest</dt>
-          <dd className="col-sm-6">{formatMoney(interest)}</dd>
+          <dt className="col-sm-6 g-0">Interest</dt>
+          <dd className="col-sm-6 g-0">{formatMoney(interest)}</dd>
         </dl>
         
         <dl className="row">
-          <dt className="col-sm-6">Total</dt>
-          <dd className="col-sm-6">
+          <dt className="col-sm-6 g-0">Total</dt>
+          <dd className="col-sm-6 g-0">
             { formatMoney(total) }
           </dd>
         </dl>    
