@@ -1,22 +1,8 @@
-import { Frequency, Strategy, YearResult, Result } from '../store/types'
+import { Frequency, Strategy, Result } from '../store/types'
 /*
 Calculate Compound Interest
 
 */
-
-/*
-  initialDeposit: number,
-  regularDeposit: number,
-  depositFrequency: Frequency,
-  compoundFrequency: Frequency,
-  numberOfYears: number,
-  annualInterestRate: number
-*/
-
-// Find new principal each compound:
-// newPrincipal = currentPrincipal * (1 + r)
-// Find interest rate per compound (where f is compound)
-// r/f
 
 // Calculate interest rate for each compound, given annual rate and compounds/year
 const ratePerCompound = (annualInterestRate: number, compoundFrequency: Frequency): number => annualInterestRate/frequencyPerYear(compoundFrequency)
@@ -26,7 +12,7 @@ const sumDepositsForPeriod = (amount: number, depositFrequency: Frequency, compo
    * Calculate the sum of deposits made per compound period
    * Given: Deposit amount, deposits per year, and compounds per year
    */
-  if (compoundFrequency == "Monthly")
+  if (compoundFrequency === "Monthly")
     return amount * frequencyPerYear(depositFrequency) / 12 // <-----
   // Yearly
   return amount * frequencyPerYear(depositFrequency)
