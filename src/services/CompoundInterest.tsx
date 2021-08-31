@@ -66,39 +66,38 @@ export const calculateCompoundInterest = (strategy: Strategy) => {
   let results: Result = []
 
   let P: number = initialDeposit
-  let I: number = 0
   let cumulativeDeposits: number = 0
   let cumulativeInterest: number = 0
-  for (let n:number = 0; n < frequencyPerYear(compoundFrequency); n++) {
-    // For each compound period
 
-    // 1 - All the deposits added up
-    // Deposits made this period
-    const depositThisPeriod = sumDepositsForPeriod(regularDeposit, depositFrequency, compoundFrequency)
-    
 
-    // The principle is initial + cumulativeDeposits + cumulativeInterest
-    const P = initialDeposit + cumulativeDeposits + cumulativeInterest
+  for (let year: number = 0; year < strategy.numberOfYears; year++) {
+    // For each year
 
-    // Calculate interest based on the rate
-    const i: number = P * (1 + rate) - P
+    for (let period:number = 0; period < frequencyPerYear(compoundFrequency); period++) {
+      // For each compound period in the year (1 or 12)
 
-    // Save cumulative deposits and interest
-    cumulativeDeposits += depositThisPeriod
-    cumulativeInterest += i
-    
+      // Work out deposits this period
+      const depositThisPeriod = sumDepositsForPeriod(regularDeposit, depositFrequency, compoundFrequency)
+      
+      // Calculate new principal
+      const P = initialDeposit + cumulativeDeposits + cumulativeInterest
+
+      // Calculate interest based on the rate
+      const i: number = P * (1 + rate) - P
+
+      // Save cumulative deposits and interest this period
+      cumulativeDeposits += depositThisPeriod
+      cumulativeInterest += i
+    }
 
     results.push({
-      yearNumber: n+1,
+      yearNumber: year+1,
+      initialDeposit: initialDeposit,
       cumulativeRegularDeposits: cumulativeDeposits, // Principal less initial deposit
       cumulativeInterest: cumulativeInterest,
-      cumulativeTotal: P + I
+      cumulativeTotal: P
     })
 
-    // Inital deposit
-    // Cumulative regular deposits
-    // Interest
-    // Sub-total
   }
 
   return results

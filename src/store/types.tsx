@@ -13,9 +13,10 @@ export interface Strategy {
 }
 
 export interface YearResult {
-  yearNumber: number
-  cumulativeRegularDeposits: Money
-  cumulativeInterest: Money
+  yearNumber: number,
+  initialDeposit: Money,
+  cumulativeRegularDeposits: Money,
+  cumulativeInterest: Money,
   cumulativeTotal: Money
 }
 
