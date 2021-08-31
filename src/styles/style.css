@@ -29,3 +29,10 @@ body {
   line-height: 32%;
   margin-top: 24px;
 }
+
+#footer {
+  margin-bottom: 40px
+}
+#footer div {
+  text-align: center
+}
