@@ -10,24 +10,33 @@ interface Props {
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>): any => {
   if (active && payload && payload.length) {
+    const inital = Number(payload[0].value)
+    const deposits = Number(payload[1].value)
+    const interest = Number(payload[2].value)
+
+    const total = inital + deposits + interest
+
     return (
       <div className="custom-tooltip">
         <dl className="row">
           <dt className="col-sm-6">Initial</dt>
-          <dd className="col-sm-6">{formatMoney(Number(payload[0].value))}</dd>
+          <dd className="col-sm-6">{formatMoney(inital)}</dd>
         </dl>
         <dl className="row">
           <dt className="col-sm-6">Deposits</dt>
-          <dd className="col-sm-6">{formatMoney(Number(payload[1].value))}</dd>
+          <dd className="col-sm-6">{formatMoney(deposits)}</dd>
         </dl>
         <dl className="row">
           <dt className="col-sm-6">Interest</dt>
-          <dd className="col-sm-6">{formatMoney(Number(payload[2].value))}</dd>
+          <dd className="col-sm-6">{formatMoney(interest)}</dd>
         </dl>
+        
         <dl className="row">
           <dt className="col-sm-6">Total</dt>
-          <dd className="col-sm-6">{formatMoney(Number(payload[3].value))}</dd>
-        </dl>     
+          <dd className="col-sm-6">
+            { formatMoney(total) }
+          </dd>
+        </dl>    
       </div>
     )
   } else {
@@ -63,7 +72,6 @@ const ResultChart: React.FC<Props> = ({data, initialDeposit}) => {
           <Bar name="Initial deposit" dataKey="initialDeposit" stackId="a" fill="#1c4d78" />
           <Bar name="Regular deposits" dataKey="cumulativeRegularDeposits" stackId="a" fill="#3c83c2" />
           <Bar name="Interest" dataKey="cumulativeInterest" stackId="a" fill="#82ca9d" />
-          <Bar dataKey="cumulativeTotal" stackId="a" fill="#5dadf5" maxBarSize={0} />
         </BarChart>
       </ResponsiveContainer>
   )
