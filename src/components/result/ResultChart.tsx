@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, TooltipProps } from 'recharts';
 import { YearResult, Result, Money } from '../../store/types';
+import formatMoney from '../../services/FormatMoney'
 
 interface Props {
   data: Result,
@@ -13,19 +14,19 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>)
       <div className="custom-tooltip">
         <dl className="row">
           <dt className="col-sm-6">Initial</dt>
-          <dd className="col-sm-6">{`${payload[0].value?.toFixed(2)}`}</dd>
+          <dd className="col-sm-6">{formatMoney(Number(payload[0].value))}</dd>
         </dl>
         <dl className="row">
           <dt className="col-sm-6">Deposits</dt>
-          <dd className="col-sm-6">{`${payload[1].value?.toFixed(2)}`}</dd>
+          <dd className="col-sm-6">{formatMoney(Number(payload[1].value))}</dd>
         </dl>
         <dl className="row">
           <dt className="col-sm-6">Interest</dt>
-          <dd className="col-sm-6">{`${payload[2].value?.toFixed(2)}`}</dd>
+          <dd className="col-sm-6">{formatMoney(Number(payload[2].value))}</dd>
         </dl>
         <dl className="row">
           <dt className="col-sm-6">Total</dt>
-          <dd className="col-sm-6">{`${payload[3].value?.toFixed(2)}`}</dd>
+          <dd className="col-sm-6">{formatMoney(Number(payload[3].value))}</dd>
         </dl>     
       </div>
     )
