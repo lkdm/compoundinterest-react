@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/style.css'
 import Form from './components/calculator/Form'
-import {Strategy} from './store/types'
+import {Strategy, YearResult, Result} from './store/types'
 import {cleanNumber, cleanMoney, cleanPercent, cleanYears} from './services/InputCleaners'
 import { calculateCompoundInterest } from './services/CompoundInterest'
+import ResultChart from './components/result/ResultChart'
 
 interface Props {
   strategy: Strategy
@@ -21,6 +22,7 @@ const defaultStrategy: Strategy = {
 
 const App = () => {
   const [strategy, setStrategy] = useState<Strategy>(defaultStrategy)
+  const [result, setResult] = useState<Result>()
 
   const handleSubmit = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     // Handles a submit event each time the user changes something in the form
@@ -48,8 +50,13 @@ const App = () => {
 
   useEffect(() => {
     // Upon state change
+    // Perform the calculations
     const result = calculateCompoundInterest(strategy)
-    console.log(result)
+    // Refine the result for the chart
+
+    // Set the result state, to update the chart
+    setResult(result)
+    
   }, [strategy])
 
   return (
@@ -78,8 +85,8 @@ const App = () => {
       <div className="row justify-content-center">
         <div className="col-12">
             <h2>Results</h2>
-            
           
+            <ResultChart data={result} initialDeposit={strategy.initialDeposit} />
         </div>
       </div>
 

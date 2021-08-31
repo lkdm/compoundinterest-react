@@ -1,4 +1,4 @@
-import { Frequency, Strategy, YearResult } from '../store/types'
+import { Frequency, Strategy, YearResult, Result } from '../store/types'
 /*
 Calculate Compound Interest
 
@@ -66,7 +66,7 @@ export const calculateCompoundInterest = (strategy: Strategy) => {
    * Perform calculations per compound frequency
    */
 
-  let results: Array<YearResult> = []
+  let results: Result = []
 
   let P: number = initialDeposit
   let I: number = 0

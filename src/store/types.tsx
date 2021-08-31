@@ -18,3 +18,5 @@ export interface YearResult {
   cumulativeInterest: Money
   cumulativeTotal: Money
 }
+
+export type Result = Array<YearResult> | undefined
