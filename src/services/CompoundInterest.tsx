@@ -80,7 +80,7 @@ export const calculateCompoundInterest = (strategy: Strategy) => {
       const depositThisPeriod = sumDepositsForPeriod(regularDeposit, depositFrequency, compoundFrequency)
       
       // Calculate new principal
-      const P = initialDeposit + cumulativeDeposits + cumulativeInterest
+      P = initialDeposit + cumulativeDeposits + cumulativeInterest
 
       // Calculate interest based on the rate
       const i: number = P * (1 + rate) - P

@@ -6,6 +6,7 @@ import {Strategy, YearResult, Result} from './store/types'
 import {cleanNumber, cleanMoney, cleanPercent, cleanYears} from './services/InputCleaners'
 import { calculateCompoundInterest } from './services/CompoundInterest'
 import ResultChart from './components/result/ResultChart'
+import ResultsText from './components/result/ResultsText'
 
 interface Props {
   strategy: Strategy
@@ -75,6 +76,7 @@ const App = () => {
             </p>
         </div>
       </div>
+      <hr />
       <div className="row justify-content-center">
         <div className="col-12">
             <h2>Your strategy</h2>
@@ -91,17 +93,27 @@ const App = () => {
 
       <div className="row justify-content-center">
         <div className="col-12">
+            <h3>Your strategy</h3>
+            <ResultsText data={result} initialDeposit={strategy.initialDeposit} />
+        </div>
+      </div>
+      <hr />
+      <div className="row justify-content-center">
+        <div className="col-12">
             <h2>About</h2>
+            <p>
+              This is a compound interest calculator inspired <a href="https://moneysmart.gov.au/budgeting/compound-interest-calculator" target="0">a similar Javascript app</a> made for the Australian Government's Money Smart website. It is made with ReactJS, Typescript, and Bootstrap CSS.
+            </p>
             
-            <h3>Technologies used</h3>
-
-            <ul>
-              <li>Javascript</li>
-              <li>Typescript</li>
-              <li>ReactJS</li>
-              <li>Redux</li>
-              <li>Bootstrap CSS</li>
-            </ul>
+            <div className="row" id="footer">
+              <div className="col-6">
+                <a className="btn btn-success" href="https://github.com/lkdm/react-compound-interest-calculator" role="button" target="0">👀 &nbsp; View the sourcecode &nbsp;👀</a>
+              </div>
+              <div className="col-6">
+                <a className="btn btn-warning" href="https://github.com/lkdm" role="button" target="0">🧞 &nbsp; Meet the developer &nbsp;🧞</a>
+              </div>
+            </div>
+            
         </div>
       </div>
     </div>
