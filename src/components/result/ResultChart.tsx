@@ -21,7 +21,7 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>)
     return (
       <div className="custom-tooltip">
         <dl className="row">
-          <dt className="col-sm-12 g-0">Year {label}</dt>
+          <dt className="col-sm-12 g-0">🚀 &nbsp; Year {label}</dt>
         </dl>
         <hr />
         <dl className="row">
