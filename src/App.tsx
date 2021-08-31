@@ -10,11 +10,11 @@ import ResultsText from './components/result/ResultsText'
 
 const defaultStrategy: Strategy = {
   initialDeposit: 0, // in cents
-  regularDeposit: 0, // in cents
-  depositFrequency: "Monthly",
-  compoundFrequency: "Monthly",
+  regularDeposit: 2000, // in cents
+  depositFrequency: "Annually",
+  compoundFrequency: "Annually",
   numberOfYears: 10,
-  annualInterestRate: 5
+  annualInterestRate: 500
 }
 
 const App = () => {
@@ -83,14 +83,14 @@ const App = () => {
       <div className="row justify-content-center">
         <div className="col-12">
             <h2>Results</h2>
-            <ResultChart data={result} initialDeposit={strategy.initialDeposit} />
+            {(strategy.numberOfYears > 0) ? <ResultChart data={result} initialDeposit={strategy.initialDeposit} /> : "" }
         </div>
       </div>
 
       <div className="row justify-content-center">
         <div className="col-12">
             <h3>Your strategy</h3>
-            <ResultsText data={result} initialDeposit={strategy.initialDeposit} />
+            {(strategy.numberOfYears > 0) ? <ResultsText data={result} initialDeposit={strategy.initialDeposit} /> : "" }
         </div>
       </div>
       <hr />

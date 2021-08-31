@@ -36,6 +36,9 @@ const frequencyPerYear = (frequency: Frequency): number => {
 
 export const calculateCompoundInterest = (strategy: Strategy) => {
 
+  // Guard: Check number of years is more than 0
+  if (strategy.numberOfYears < 1) return
+
   // Definitions
   const initialDeposit = strategy.initialDeposit/100
   const regularDeposit = strategy.regularDeposit/100
