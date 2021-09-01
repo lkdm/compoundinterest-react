@@ -1,9 +1,9 @@
-import { Result, Money } from '../../store/types';
+import { Result } from '../../store/types';
 import formatMoney from '../../services/FormatMoney'
 
 interface Props {
   data: Result,
-  initialDeposit: Money
+  initialDeposit: number
 }
 
 const ResultsText: React.FC<Props> = ({data, initialDeposit}) => {

@@ -1,23 +1,20 @@
 export type Frequency = "Annually" | "Monthly" | "Fortnightly" | "Weekly" | "Daily"
 
-export type Money = number
-export type Percent = number
-
 export interface Strategy {
-  initialDeposit: Money,
-  regularDeposit: Money,
+  initialDeposit: number,
+  regularDeposit: number,
   depositFrequency: Frequency,
   compoundFrequency: Frequency,
   numberOfYears: number,
-  annualInterestRate: Percent
+  annualInterestRate: number
 }
 
 export interface YearResult {
   yearNumber: number,
-  initialDeposit: Money,
-  cumulativeRegularDeposits: Money,
-  cumulativeInterest: Money,
-  cumulativeTotal: Money
+  initialDeposit: number,
+  cumulativeRegularDeposits: number,
+  cumulativeInterest: number,
+  cumulativeTotal: number
 }
 
 export type Result = Array<YearResult> | undefined
