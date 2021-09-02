@@ -1,6 +1,6 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, TooltipProps } from 'recharts';
-import { Result } from '../../store/types';
+import { Result } from '../../types/types';
 import formatMoney from '../../services/FormatMoney'
 
 interface Props {

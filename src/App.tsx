@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/style.css'
 import Form from './components/calculator/Form'
-import {Strategy, Result} from './store/types'
+import {Strategy, Result} from './types/types'
 import {cleanMoney, cleanPercent, cleanYears} from './services/InputCleaners'
 import { calculateCompoundInterest } from './services/CompoundInterest'
 import ResultChart from './components/result/ResultChart'

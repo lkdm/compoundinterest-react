@@ -1,4 +1,4 @@
-import { Frequency, Strategy, Result } from '../store/types'
+import { Frequency, Strategy, Result } from '../types/types'
 /*
 Calculate Compound Interest
 

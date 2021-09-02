@@ -1,4 +1,4 @@
-import { Result } from '../../store/types';
+import { Result } from '../../types/types';
 import formatMoney from '../../services/FormatMoney'
 
 interface Props {

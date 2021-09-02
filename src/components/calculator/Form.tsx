@@ -1,6 +1,6 @@
 import TextInput from './TextInput'
 import DropDownInput from './DropDownInput'
-import {Strategy, Frequency} from '../../store/types'
+import {Strategy, Frequency} from '../../types/types'
 import { ChangeEventHandler } from 'react'
 
 interface Props {
