@@ -1,6 +1,8 @@
 # react-compound-interest-calculator
 A compound interest calculator to assist in financial decision making. Created to demonstrate my ability to develop applications in ReactJS, Typescript, and Bootstrap CSS.
 
+![A preview of the bar graph from the application.](https://i.imgur.com/s1ChISV.png)
+
 - [Try it online](https://compoundinterest.lkdm.org)
 
 ## Features
