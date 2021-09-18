@@ -19,7 +19,7 @@ const TextInput: React.FC<Props> = ({label, name, prepend, append, onSubmit, val
       <div className="input-group mb-3">
         {prepend && <span className="input-group-text">{prepend}</span>}
         <input
-          type="text"
+          type="number"
           name={name}
           className="form-control"
           aria-label="{label}"
