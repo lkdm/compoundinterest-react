@@ -1,5 +1,6 @@
 {
   "name": "react-compound-interest-calculator",
+  "homepage": "https://lkdm.github.io/compoundinterest-react/"
   "version": "0.1.0",
   "private": true,
   "dependencies": {
