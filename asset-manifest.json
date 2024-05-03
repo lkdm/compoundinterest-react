@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/compoundinterest-react/static/css/main.2acf4431.chunk.css",
+    "main.js": "/compoundinterest-react/static/js/main.2457f4e4.chunk.js",
+    "main.js.map": "/compoundinterest-react/static/js/main.2457f4e4.chunk.js.map",
+    "runtime-main.js": "/compoundinterest-react/static/js/runtime-main.feb0d630.js",
+    "runtime-main.js.map": "/compoundinterest-react/static/js/runtime-main.feb0d630.js.map",
+    "static/css/2.1fb90f1e.chunk.css": "/compoundinterest-react/static/css/2.1fb90f1e.chunk.css",
+    "static/js/2.adc08b05.chunk.js": "/compoundinterest-react/static/js/2.adc08b05.chunk.js",
+    "static/js/2.adc08b05.chunk.js.map": "/compoundinterest-react/static/js/2.adc08b05.chunk.js.map",
+    "index.html": "/compoundinterest-react/index.html",
+    "static/css/2.1fb90f1e.chunk.css.map": "/compoundinterest-react/static/css/2.1fb90f1e.chunk.css.map",
+    "static/css/main.2acf4431.chunk.css.map": "/compoundinterest-react/static/css/main.2acf4431.chunk.css.map",
+    "static/js/2.adc08b05.chunk.js.LICENSE.txt": "/compoundinterest-react/static/js/2.adc08b05.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.feb0d630.js",
+    "static/css/2.1fb90f1e.chunk.css",
+    "static/js/2.adc08b05.chunk.js",
+    "static/css/main.2acf4431.chunk.css",
+    "static/js/main.2457f4e4.chunk.js"
+  ]
+}
